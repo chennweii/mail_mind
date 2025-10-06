@@ -17,6 +17,9 @@ export default function AuthButton() {
     async function signInWithGoogle() {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
+            options: {
+                redirectTo: `${location.origin}/dashboard`,
+            },
         });
 
         if (error) console.log("Error logging in: ", error.message);
